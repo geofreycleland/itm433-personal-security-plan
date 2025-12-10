@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Security Plan</title>
+
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+
+      /* COLORS FOR SCREEN */
+      --purple: #6d5bd0;
+      --light-blue: #a8d8ff;
+      --light-purple-bg: #f3f0ff;
+      --table-border: #b8b8c9;
+    }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      background: #f5f5f5;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px 24px;
+      border: 2px solid var(--purple);
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: var(--purple);
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      border-bottom: 2px solid var(--purple);
+      padding-bottom: 4px;
+      color: var(--purple);
+    }
+
+    h3 {
+      color: var(--purple);
+    }
+
+    .intro {
+      background: var(--light-purple-bg);
+      border-left: 4px solid var(--purple);
+      padding: 8px 10px;
+      border-radius: 4px;
+    }
+
+    .section-box {
+      border: 1px solid var(--purple);
+      background: #ffffff;
+      padding: 10px 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+    }
+
+    th, td {
+      border: 1px solid var(--table-border);
+      padding: 4px;
+    }
+
+    th {
+      background: var(--light-blue);
+      color: #000;
+    }
+.small-note {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #555;
+  font-style: italic;
+}
+.small-note a {
+  font-weight: 600;
+  color: var(--purple);
+}
+
+
+    /* -------------------------------------------------------
+       INPUTS converted to AUTO-EXPANDING textareas
+    -------------------------------------------------------- */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"] {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid var(--purple);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font: inherit;
+
+  /* AUTO EXPAND SETTINGS */
+  overflow: hidden;
+  resize: none;
+  min-height: 18px; 
+}
+
+textarea,
+textarea.text-input {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid var(--purple);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font: inherit;
+
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  overflow: hidden; /* AUTO EXPAND */
+  resize: none;
+}
+
+    .checkbox-list li {
+      background: var(--light-purple-bg);
+      border-left: 3px solid var(--purple);
+      padding: 4px 6px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+
+    .btn {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--purple);
+      background: var(--light-blue);
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #000;
+    }
+
+    .btn:hover {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    /* PRINT MODE */
+    @media print {
+@page {
+    margin: 0;
+  }
+table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    font-size: 12px !important;
+  }
+
+  th, td {
+    padding: 2px 3px !important;
+  }
+.page {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    width: 100% !important;
+  }
+.no-print {
+  display: none !important;
+}
+  .section-box {
+    page-break-inside: avoid;
+  }
+
+  #section1 { page-break-after: always; }
+  #section2 { page-break-after: always; }
+  #section2-1 { page-break-after: always; }
+  #section3 { page-break-after: always; }
+  #section4 { page-break-after: always; }
+  #section5 { page-break-after: always; }
+  #section6 { page-break-after: avoid; }
+
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color: #000 !important;
+        background: #fff !important;
+        border-color: #000 !important;
+      }
+
+      th {
+        background: #eee !important;
+      }
+
+      .page {
+        margin: 0.4in;
+        padding: 0;
+      }
+
+      .checkbox-list li {
+        border-color: #000 !important;
+      }
+
+      .print-button-bar {
+        display: none !important;
+      }
+    }
+/* Textareas that look like inputs */
+.fake-input {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid var(--purple);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font: inherit;
+  overflow: hidden;
+  resize: none;
+  white-space: pre-wrap;
+  min-height: 25px;
+}
+  </style>
+
+  
+</head>
+<body>
+  <div class="page">
+    <div class="print-button-bar" style="display:flex; justify-content:flex-end; margin-bottom:12px;">
+      <button class="btn" onclick="window.print()">Print This Plan</button>
+    </div>
+    <h1>Personal Security Plan</h1>
+    <p class="intro no-print">
+      Fill this out together with a trusted helper. Someone you completely trust!
+Do not share this with anyone you are unsure about, because this information could let the wrong person access your accounts. Keep a printed copy in a safe and secure place.
+    </p>
+    <div class="section-box" id="section1">
+      <h2>1. Owner & Helper Info <p class="no-print small-note">
+  Why this matters: <a href="https://www.ready.gov/plan" target="_blank">
+  Why having a designated helper prevents chaos during emergencies</a>
+</p>
+</h2>
+      <table>
+        <tr>
+          <th style="width: 25%;">Your Full Name</th>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <th>Main Email Address</th>
+          <td><input type="email" /></td>
+        </tr>
+        <tr>
+          <th>Main Phone Number</th>
+          <td><input type="tel" /></td>
+        </tr>
+        <tr>
+          <th>Trusted Helper Name</th>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <th>Helper Phone / Email</th>
+          <td><input type="text" /></td>
+        </tr>
+      </table>
+      <p class="small-note no-print">
+        This plan is meant to help your helper get into important accounts if something goes wrong.
+      </p>
+    </div>
+
+    <div class="section-box" id="section2">
+      <h2>2. Important Accounts (Big 3 and more) <p class="no-print small-note">
+  Why this matters:
+  <a href="https://consumer.ftc.gov/node/77479" target="_blank">
+    The FTC warns that hackers and scammers target your online accounts to steal personal and financial information. Securing your primary accounts — especially your email, bank, and phone — is one of the most important steps you can take to prevent identity theft and fraud.
+  </a>
+</p>
+</h2>
+      <p class="no-print">
+        Start with money, email, and phone accounts. You do <strong>not</strong> need to list
+        every streaming service here.
+      </p>
+	<button class="btn no-print" onclick="addRecommendedAccounts()">Add Recommended Accounts</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 4%;">#</th>
+            <th style="width: 16%;">Account Name<br><span class="small-note no-print">Bank, Gmail, Verizon, etc</span></th>
+            <th style="width: 14%;">What Is It?<br><span class="small-note no-print">Checking, email, phone, etc</span></th>
+            <th style="width: 16%;">Login Email / Username</th>
+            <th style="width: 18%;">Website / App</th>
+            <th style="width: 8%;">MFA?</th>
+            <th style="width: 14%;">MFA Device<br><span class="small-note no-print">Phone # or email</span></th>
+            <th style="width: 10%;">Notes / Help Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 10 rows -->
+          <!-- Row template -->
+          <!-- You can duplicate or remove rows as needed -->
+          <tr>
+            <td>1</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+          </tr>
+        </tbody>
+      </table>
+<button class="btn no-print" onclick="addAccountRow()" style="margin-left: 8px; margin-bottom: 10px;">
+  Add Row
+</button>
+      <p class="small-note no-print">
+        Tip: Use this mainly for bank accounts, credit cards, retirement/investment accounts,
+        main email, and your phone carrier.
+      </p>
+</div>
+<div class="section-box" id="section2-1">
+  <h2>2.1 Important Documents (Non-Online Assets)</h2>
+
+  <p class="no-print small-note">
+    These are documents you or your helper may need in an emergency.
+  </p>
+
+  <!-- BUTTON TO ADD RECOMMENDED DOCUMENTS -->
+  <button class="btn no-print" onclick="addRecommendedDocuments()" style="margin-bottom: 10px;">
+    Add Recommended Documents
+  </button>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 30%;">Document</th>
+        <th style="width: 40%;">Where It’s Stored</th>
+        <th style="width: 30%;">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><textarea rows="1"></textarea></td>
+        <td><textarea rows="1"></textarea></td>
+        <td><textarea rows="1"></textarea></td>
+      </tr>
+      <tr>
+        <td><textarea rows="1"></textarea></td>
+        <td><textarea rows="1"></textarea></td>
+        <td><textarea rows="1"></textarea></td>
+      </tr>
+      <tr>
+        <td><textarea rows="1"></textarea></td>
+        <td><textarea rows="1"></textarea></td>
+        <td><textarea rows="1"></textarea></td>
+      </tr>
+      <tr>
+        <td><textarea rows="1"></textarea></td>
+        <td><textarea rows="1"></textarea></td>
+        <td><textarea rows="1"></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+<button class="btn no-print" onclick="addDocumentRow()" style="margin-left: 8px; margin-bottom: 10px;">
+  Add Row
+</button>
+</div>
+
+    <div class="section-box" id="section3">
+      <h2>3. Password Manager (Bitwarden) <p class="no-print small-note">
+  Why this matters:
+  <a href="https://staysafeonline.org/articles/password-managers" target="_blank">
+    A password manager helps you create, store, and autofill strong, unique passwords for every account, reducing the risk of hacks and making your online life more secure and manageable.
+  </a>
+</p>
+</h2>
+
+      <ul class="checkbox-list">
+        <li><input type="checkbox" /> Bitwarden account created with my main email</li>
+        <li><input type="checkbox" /> Bitwarden installed on my phone</li>
+        <li><input type="checkbox" /> Bitwarden installed / set up in my web browser</li>
+	<li><input type="checkbox" /> MFA turned on for Bitwarden (highly recommended)</li>
+        <li><input type="checkbox" /> Master password written down and stored safely</li>
+        <li><input type="checkbox" /> Trusted helper can get to my Bitwarden if needed</li>
+      </ul>
+
+      <table>
+        <tr>
+          <th style="width: 30%;">Bitwarden Login Email</th>
+          <td><input type="email" /></td>
+        </tr>
+        <tr>
+          <th>Where Master Password Is Stored<br><span class="small-note no-print">(e.g., In safe, red folder)</span></th>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <th>Notes About Bitwarden</th>
+          <td><textarea rows="5"></textarea></td>
+        </tr>
+      </table>
+<p class="no-print small-note">
+  ▶️ <a href="https://youtu.be/hWqyPW0QJRk?si=ardwdVdWayhUnO-V" target="_blank">Video: How Bitwarden Works (Beginner)</a><br>
+  ▶️ <a href="https://youtu.be/5NqZt-Ifq7g?si=HYZH0lU40k-0XS8e" target="_blank">How to Set Up Bitwarden on Your Phone</a>
+</p>
+    </div>
+
+    <div class="section-box" id="section4">
+      <h2>4. Multi-Factor Authentication (MFA) <p class="no-print small-note">
+  Why this matters: <a href="https://www.cisa.gov/resources-tools/resources/multi-factor-authentication-mfa" target="_blank">
+  MFA blocks 99% of account-takeover attacks</a>
+</p>
+</h2>
+      <p class="small-note no-print">
+        MFA = a second step (code or app) after your password. Turn this on for your most
+        important accounts.
+      </p>
+
+      <ul class="checkbox-list">
+        <li><input type="checkbox" /> MFA turned on for my main bank / credit union</li>
+        <li><input type="checkbox" /> MFA turned on for my main email account</li>
+        <li><input type="checkbox" /> MFA turned on for my phone carrier account</li>
+        <li><input type="checkbox" /> Backup codes printed or stored safely</li>
+      </ul>
+
+      <table>
+        <tr>
+          <th style="width: 30%;">Authenticator App Used<br><span class="small-note">(e.g., Google Authenticator)</span></th>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <th>Where Backup Codes Are Stored</th>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <th>Notes About MFA</th>
+          <td><textarea rows="5"></textarea></td>
+        </tr>
+      </table>
+<p class="no-print small-note">
+  ▶️ <a href="https://youtu.be/L3alw3iXaio?si=yCttFycAs5Ds7KaV" target="_blank">What Is MFA?</a><br>
+  ▶️ <a href="https://youtu.be/eVnf3x5w4rA?si=ACMto4hkwH9gogAY" target="_blank">How to Set Up an Authenticator App</a>
+</p>
+    </div>
+
+    <div class="section-box" id="section5">
+      <h2>5. Credit Freeze ( Frozen PII ) <p class="no-print small-note">
+  Why this matters: <a href="https://www.consumer.ftc.gov/articles/what-know-about-credit-freezes-fraud-alerts" target="_blank">
+  A credit freeze prevents criminals from opening accounts in your name</a>
+</p>
+</h2>
+      <p class="small-note no-print">
+        Freezing your credit helps stop strangers from opening new loans or credit cards in
+        your name.
+      </p>
+
+      <ul class="checkbox-list">
+        <li><input type="checkbox" /> Equifax credit file frozen</li>
+        <li><input type="checkbox" /> Experian credit file frozen</li>
+        <li><input type="checkbox" /> TransUnion credit file frozen</li>
+      </ul>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 18%;">Bureau</th>
+            <th style="width: 22%;">Login Email / Username</th>
+            <th style="width: 25%;">Website</th>
+            <th style="width: 20%;">Phone / PIN / Notes</th>
+            <th style="width: 15%;">Freeze Done?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Equifax</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>Experian</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>TransUnion</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td style="text-align: center;"><input type="checkbox" /></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="small-note no-print">
+        Optional but powerful. Your helper should know how to thaw/unfreeze this if you ever
+        apply for new credit.
+      </p>
+    </div>
+
+    <div class="section-box" id="section6">
+      <h2>6. Final Check <p class="no-print small-note">
+  Why this matters: staying organized prevents lockouts and reduces risk.
+</p>
+</h2>
+      <ul class="checkbox-list">
+        <li><input type="checkbox" /> My important accounts are listed in the table above</li>
+        <li><input type="checkbox" /> My helper knows where this printed plan is stored</li>
+        <li><input type="checkbox" /> My helper can get into Bitwarden if needed</li>
+        <li><input type="checkbox" /> I understand that MFA is my 'second lock on the door'</li>
+      </ul>
+
+      <table>
+        <tr>
+          <th style="width: 30%;">Date Completed / Reviewed</th>
+          <td><input type="text" /></td>
+        </tr>
+        <tr>
+          <th>Anything We Still Need to Do</th>
+          <td><textarea rows="5"></textarea></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="small-note" style="margin-top: 8px;">
+      Tip: Review this plan once a year or when you change banks, phones, or helpers.
+    </div>
+  </div>
+
+  <script>
+    /* -------------------------------
+   AUTO-EXPAND FUNCTION
+-------------------------------- */
+function autoExpand(el) {
+  el.style.height = "auto";
+  el.style.height = el.scrollHeight + "px";
+}
+
+/* -------------------------------
+   CONVERT ALL INPUTS TO TEXTAREAS
+-------------------------------- */
+document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"]').forEach(input => {
+  
+  // Create replacement textarea
+  const ta = document.createElement("textarea");
+  ta.className = "fake-input";
+  ta.value = input.value;
+
+  // Copy attributes
+  [...input.attributes].forEach(attr => {
+    if (attr.name !== "type") ta.setAttribute(attr.name, attr.value);
+  });
+
+  // Insert textarea & remove input
+  input.parentNode.replaceChild(ta, input);
+
+  // Enable auto-growing
+  ta.addEventListener("input", () => autoExpand(ta));
+  autoExpand(ta);
+});
+
+/* -------------------------------
+   AUTO-EXPAND ALL EXISTING TEXTAREAS
+-------------------------------- */
+document.querySelectorAll("textarea").forEach(t => {
+  t.addEventListener("input", () => autoExpand(t));
+  autoExpand(t);
+});
+
+function addRecommendedAccounts() {
+  const starters = [
+    ["Bank / Credit Union", "Checking Account", "", "bankofhawaii.com", "", "", "Customer service #"],
+    ["Main Email", "Email", "", "gmail.com", "", "", "Recovery email?"],
+    ["Phone Carrier", "Mobile Service", "", "verizon.com or t-mobile.com", "", "", "PIN / passcode?"]
+  ];
+
+  const rows = document.querySelectorAll('#section2 tbody tr');
+
+  starters.forEach((data, i) => {
+    const row = rows[i];
+    if (!row) return;
+
+    const cells = row.querySelectorAll("textarea, input[type='checkbox']");
+    data.forEach((val, index) => {
+      if (cells[index] && cells[index].tagName.toLowerCase() === "textarea") {
+        cells[index].value = val;
+        autoExpand(cells[index]);
+      }
+    });
+  });
+}
+function addRecommendedDocuments() {
+  const starters = [
+    "Passport(s)",
+    "Birth Certificate(s)",
+    "Social Security Card(s)",
+    "Military / VA Documents",
+    "Insurance Policies (Life / Auto / Home)",
+    "Marriage Certificate / Divorce Decree",
+    "House Deed / Lease Agreement"
+  ];
+
+  const rows = document.querySelectorAll('#section2-1 tbody tr');
+
+  starters.forEach((doc, i) => {
+    const row = rows[i];
+    if (!row) return;
+
+    const cell = row.querySelectorAll("textarea")[0];
+    cell.value = doc;
+    autoExpand(cell);
+  });
+}
+function addDocumentRow() {
+  const tableBody = document.querySelector('#section2-1 tbody');
+  
+  // Create a new row
+  const newRow = document.createElement("tr");
+
+  // Each row has 3 textareas (Document, Storage, Notes)
+  for (let i = 0; i < 3; i++) {
+    const td = document.createElement("td");
+    const ta = document.createElement("textarea");
+
+    ta.rows = 1;
+    ta.className = "fake-input";
+
+    // Enable auto-expand
+    ta.addEventListener("input", () => autoExpand(ta));
+    autoExpand(ta);
+
+    td.appendChild(ta);
+    newRow.appendChild(td);
+  }
+
+  tableBody.appendChild(newRow);
+}
+function addAccountRow() {
+  const tbody = document.querySelector('#section2 tbody');
+
+  // Create the <tr>
+  const tr = document.createElement("tr");
+
+  // There are 8 columns in the Important Accounts table
+  // Columns: #, Account, Type, Login, Website, MFA checkbox, MFA device, Notes
+  for (let col = 0; col < 8; col++) {
+    const td = document.createElement("td");
+
+    if (col === 0) {
+      // Auto-number the new row
+      td.textContent = tbody.children.length + 1;
+    } else if (col === 5) {
+      // MFA checkbox column
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.style.display = "block";
+      checkbox.style.margin = "0 auto";
+      td.appendChild(checkbox);
+    } else {
+      // All other columns use auto-expanding textarea
+      const ta = document.createElement("textarea");
+      ta.className = "fake-input";
+      ta.rows = 1;
+
+      // Attach auto expand
+      ta.addEventListener("input", () => autoExpand(ta));
+      setTimeout(() => autoExpand(ta), 0);
+
+      td.appendChild(ta);
+    }
+
+    tr.appendChild(td);
+  }
+
+  tbody.appendChild(tr);
+}
+  </script>
+</body>
+</html>
