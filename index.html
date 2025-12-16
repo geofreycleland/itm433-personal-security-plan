@@ -172,12 +172,21 @@ table {
   th, td {
     padding: 2px 3px !important;
   }
-.page {
-    margin: 0 !important;
+  .page {
+    /* width: 100% !important; REMOVED */
+    box-sizing: border-box !important;
+
+    /* CENTERING FIX FOR CHROME + FIREFOX */
+    /* margin-left: auto !important; REMOVED */
+    /* margin-right: auto !important; REMOVED */
+    position: static !important; /* Change from relative to static */
+    transform: none !important; /* Change from translateX(-50%) to none */
+
+    /* PRINT MARGINS */
     padding: 0 !important;
-    border: none !important;
-    width: 100% !important;
-  }
+    margin-top: 0.4in !important;
+    margin-bottom: 0.4in !important;
+}
 .no-print {
   display: none !important;
 }
@@ -205,11 +214,6 @@ table {
         background: #eee !important;
       }
 
-      .page {
-        margin: 0.4in;
-        padding: 0;
-      }
-
       .checkbox-list li {
         border-color: #000 !important;
       }
@@ -231,6 +235,49 @@ table {
   white-space: pre-wrap;
   min-height: 25px;
 }
+/* FORCE PRINT MODE FOR PDF EXPORT */
+.print-mode {
+  display: block;
+}
+
+.print-mode .print-button-bar {
+  display: none !important;
+}
+
+/* Apply ALL @media print styles manually */
+.print-mode .page {
+  margin: 0 auto !important; /* ADDED: Ensure centering */
+  padding: 0 !important;
+  border: none !important;
+  width: 7.8in !important; /* FIX: Set a slightly smaller width to avoid clipping the border */
+  box-shadow: none !important;
+}
+
+.print-mode th {
+  background: #eee !important;
+}
+
+.print-mode *,
+.print-mode *::before,
+.print-mode *::after {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color: #000 !important;
+  background: #fff !important;
+  border-color: #000 !important;
+}
+
+.print-mode .no-print {
+  display: none !important;
+}
+
+/* Respect your page breaks */
+.print-mode #section1 { page-break-after: always !important; }
+.print-mode #section2 { page-break-after: always !important; }
+.print-mode #section2-1 { page-break-after: always !important; }
+.print-mode #section3 { page-break-after: always !important; }
+.print-mode #section4 { page-break-after: always !important; }
+.print-mode #section5 { page-break-after: always !important; }
   </style>
 
   
@@ -238,6 +285,7 @@ table {
 <body>
   <div class="page">
     <div class="print-button-bar" style="display:flex; justify-content:flex-end; margin-bottom:12px;">
+	  <button class="btn" onclick="savePDF()">Save as PDF</button>
       <button class="btn" onclick="window.print()">Print This Plan</button>
     </div>
     <h1>Personal Security Plan</h1>
@@ -624,11 +672,23 @@ Do not share this with anyone you are unsure about, because this information cou
         </tr>
       </table>
     </div>
-
-    <div class="small-note" style="margin-top: 8px;">
-      Tip: Review this plan once a year or when you change banks, phones, or helpers.
+	<div style="
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 10px;
+        font-size: 0.8rem;
+        color: #555;
+    ">
+        <div class="small-note" style="margin-top: 0; font-style: italic; max-width: 65%;">
+            Tip: Review this plan once a year or when you change banks, phones, or helpers.
+        </div>
+        
+        <div style="font-weight: bold; white-space: nowrap;">
+            Version 3.0 | Last Updated: 2025-12-16
+        </div>
     </div>
-  </div>
+      </div>
 
   <script>
     /* -------------------------------
@@ -777,6 +837,28 @@ function addAccountRow() {
 
   tbody.appendChild(tr);
 }
+function savePDF() {
+  const page = document.querySelector('.page');
+
+  // Enable print-mode class
+  document.body.classList.add('print-mode');
+
+  // Allow layout to update first
+  setTimeout(() => {
+    const opt = {
+      margin: 0,
+      filename: 'PersonalSecurityPlan.pdf',
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().from(page).set(opt).save().then(() => {
+      // Restore normal screen view
+      document.body.classList.remove('print-mode');
+    });
+  }, 250);
+}  
   </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>
