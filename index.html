@@ -74,7 +74,7 @@
       border-collapse: collapse;
       margin-top: 8px;
       margin-bottom: 8px;
-      font-size: 0.85rem;
+      font-size: 1rem;
     }
 
     th, td {
@@ -86,6 +86,7 @@
       background: var(--light-blue);
       color: #000;
     }
+	
 .small-note {
   font-family: "Segoe UI", Arial, sans-serif;
   font-size: 0.8rem;
@@ -602,39 +603,33 @@ Do not share this with anyone you are unsure about, because this information cou
         your name.
       </p>
 
-      <ul class="checkbox-list">
-        <li><input type="checkbox" /> Equifax credit file frozen</li>
-        <li><input type="checkbox" /> Experian credit file frozen</li>
-        <li><input type="checkbox" /> TransUnion credit file frozen</li>
-      </ul>
-
       <table>
         <thead>
           <tr>
-            <th style="width: 18%;">Bureau</th>
+            <th style="width: 20%;">Bureau</th>
             <th style="width: 22%;">Login Email / Username</th>
             <th style="width: 25%;">Website</th>
             <th style="width: 20%;">Phone / PIN / Notes</th>
-            <th style="width: 15%;">Freeze Done?</th>
+            <th style="width: 12%;">Freeze Done?</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Equifax</td>
+            <td>Equifax <a href="PDF/Equifax_Credit_Freeze.pdf" target="_blank" class="no-print small-note" style="color: var(--purple);">📄 How-To (PDF)</a></td>
             <td><input type="text" /></td>
             <td><input type="text" /></td>
             <td><input type="text" /></td>
             <td style="text-align: center;"><input type="checkbox" /></td>
           </tr>
           <tr>
-            <td>Experian</td>
+            <td>Experian <a href="PDF/Experian_Credit_Freeze.pdf" target="_blank" class="no-print small-note" style="color: var(--purple);">📄 How-To (PDF)</a></td>
             <td><input type="text" /></td>
             <td><input type="text" /></td>
             <td><input type="text" /></td>
             <td style="text-align: center;"><input type="checkbox" /></td>
           </tr>
           <tr>
-            <td>TransUnion</td>
+            <td>TransUnion <a href="PDF/TransUnion_Credit_Freeze.pdf" target="_blank" class="no-print small-note" style="color: var(--purple);">📄 How-To (PDF)</a></td>
             <td><input type="text" /></td>
             <td><input type="text" /></td>
             <td><input type="text" /></td>
@@ -672,12 +667,12 @@ Do not share this with anyone you are unsure about, because this information cou
         </tr>
       </table>
     </div>
-<div style="
-padding-left: 37%;
-padding-top: 2%;">
+	<div class="print-button-bar"style="
+		padding-left: 37%;
+		padding-top: 2%;">
   <button class="btn" onclick="savePDF()">Save as PDF</button>
   <button class="btn" onclick="window.print()">Print This Plan</button>
-</div>
+	</div>
 	<div style="
         display: flex;
         justify-content: space-between;
@@ -691,7 +686,7 @@ padding-top: 2%;">
         </div>
         
         <div style="font-weight: bold; white-space: nowrap;">
-            Version 3.0 | Last Updated: 2025-12-16
+            Version 3.1 | Last Updated: 2025-12-17
         </div>
     </div>
       </div>
@@ -846,24 +841,30 @@ function addAccountRow() {
 function savePDF() {
   const page = document.querySelector('.page');
 
-  // Enable print-mode class
+  // ✅ FORCE SCROLL TO TOP (CRITICAL FIX)
+  window.scrollTo({ top: 0, behavior: "instant" });
+
   document.body.classList.add('print-mode');
 
-  // Allow layout to update first
   setTimeout(() => {
-    const opt = {
+    html2pdf().from(page).set({
       margin: 0,
       filename: 'PersonalSecurityPlan.pdf',
-      html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-
-    html2pdf().from(page).set(opt).save().then(() => {
-      // Restore normal screen view
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        scrollY: 0   // 🔒 LOCK canvas origin
+      },
+      jsPDF: {
+        unit: 'in',
+        format: 'letter',
+        orientation: 'portrait'
+      }
+    }).save().then(() => {
       document.body.classList.remove('print-mode');
     });
-  }, 250);
-}  
+  }, 300);
+}
   </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
