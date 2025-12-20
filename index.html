@@ -279,6 +279,58 @@ table {
 .print-mode #section3 { page-break-after: always !important; }
 .print-mode #section4 { page-break-after: always !important; }
 .print-mode #section5 { page-break-after: always !important; }
+
+/* HELP MODAL */
+.help-link {
+  font-size: 0.8rem;
+  color: var(--purple);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+.help-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.help-modal {
+  background: #fff;
+  max-width: 420px;
+  padding: 16px 18px;
+  border-radius: 8px;
+  border: 2px solid var(--purple);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.help-modal h3 {
+  margin-top: 0;
+  color: var(--purple);
+}
+
+.help-close {
+  margin-top: 12px;
+  display: block;
+  text-align: right;
+  cursor: pointer;
+  color: var(--purple);
+  font-weight: 600;
+}
+
+/* Hide popups in print */
+@media print {
+  .help-overlay {
+    display: none !important;
+  }
+}
   </style>
 
   
@@ -334,7 +386,7 @@ Do not share this with anyone you are unsure about, because this information cou
     </div>
 
     <div class="section-box" id="section2">
-      <h2>2. Important Accounts (Big 3 and more) <p class="no-print small-note">
+      <h2>2. Important Accounts (Big 3 and more) <span class="help-link no-print" onclick="openHelp('big3')">What does “Big 3” mean?</span><p class="no-print small-note">
   Why this matters:
   <a href="https://consumer.ftc.gov/node/77479" target="_blank">
     The FTC warns that hackers and scammers target your online accounts to steal personal and financial information. Securing your primary accounts — especially your email, bank, and phone — is one of the most important steps you can take to prevent identity theft and fraud.
@@ -523,7 +575,7 @@ Do not share this with anyone you are unsure about, because this information cou
 </div>
 
     <div class="section-box" id="section3">
-      <h2>3. Password Manager (Bitwarden) <p class="no-print small-note">
+      <h2>3. Password Manager (Bitwarden) <span class="help-link no-print" onclick="openHelp('bitwarden')">What is this?</span> <p class="no-print small-note">
   Why this matters:
   <a href="https://staysafeonline.org/articles/password-managers" target="_blank">
     A password manager helps you create, store, and autofill strong, unique passwords for every account, reducing the risk of hacks and making your online life more secure and manageable.
@@ -561,7 +613,7 @@ Do not share this with anyone you are unsure about, because this information cou
     </div>
 
     <div class="section-box" id="section4">
-      <h2>4. Multi-Factor Authentication (MFA) <p class="no-print small-note">
+      <h2>4. Multi-Factor Authentication (MFA) <span class="help-link no-print" onclick="openHelp('mfa')">What is this?</span><p class="no-print small-note">
   Why this matters: <a href="https://www.cisa.gov/resources-tools/resources/multi-factor-authentication-mfa" target="_blank">
   MFA blocks 99% of account-takeover attacks</a>
 </p>
@@ -692,11 +744,18 @@ Do not share this with anyone you are unsure about, because this information cou
         </div>
         
         <div style="font-weight: bold; white-space: nowrap;">
-            Version 3.2 | Last Updated: 2025-12-17
+            Version 3.3 | Last Updated: 2025-12-19
         </div>
     </div>
       </div>
-
+<!-- HELP POPUPS -->
+<div id="helpOverlay" class="help-overlay" onclick="closeHelp(event)">
+  <div class="help-modal" role="dialog" aria-modal="true">
+    <h3 id="helpTitle"></h3>
+    <div id="helpContent"></div>
+    <span class="help-close" onclick="closeHelp()">Close</span>
+  </div>
+</div>
   <script>
     /* -------------------------------
    AUTO-EXPAND FUNCTION
@@ -870,6 +929,60 @@ function savePDF() {
       document.body.classList.remove('print-mode');
     });
   }, 300);
+}
+function openHelp(topic) {
+  const title = document.getElementById("helpTitle");
+  const content = document.getElementById("helpContent");
+
+  if (topic === "bitwarden") {
+    title.textContent = "What is Bitwarden?";
+    content.innerHTML = `
+      <p><strong>Think of Bitwarden like a password bank or vault.</strong></p>
+      <ul>
+        <li>All your passwords are stored safely in one place</li>
+        <li>You only need to remember <strong>one password</strong></li>
+        <li>Bitwarden fills in the rest for you</li>
+      </ul>
+      <p>
+        After it’s set up, you don’t need to remember your other passwords anymore.
+      </p>
+    `;
+  }
+
+  if (topic === "mfa") {
+    title.textContent = "What is MFA?";
+    content.innerHTML = `
+      <p><strong>MFA works like two doors protecting your account.</strong></p>
+      <ul>
+        <li><strong>Door 1:</strong> Your password</li>
+        <li><strong>Door 2:</strong> A code sent to your phone or app</li>
+      </ul>
+      <p>
+        Even if someone gets through the first door, the second door stops them.
+      </p>
+    `;
+  }
+if (topic === "big3") {
+  title.textContent = "What are the “Big 3” accounts?";
+  content.innerHTML = `
+    <p><strong>The “Big 3” are the most important accounts to secure first.</strong></p>
+    <ul>
+      <li><strong>Your main email</strong> – controls password resets</li>
+      <li><strong>Your bank or credit union</strong> – controls your money</li>
+      <li><strong>Your phone carrier</strong> – controls your phone number</li>
+    </ul>
+    <p>
+      If someone gets into these, they can often break into everything else.
+    </p>
+  `;
+}
+  document.getElementById("helpOverlay").style.display = "flex";
+}
+
+function closeHelp(e) {
+  if (!e || e.target.id === "helpOverlay") {
+    document.getElementById("helpOverlay").style.display = "none";
+  }
 }
   </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
